@@ -25,10 +25,10 @@ var controller = (function(budgetCtrl,UIctrl){
     })
 
     document.addEventListener('keypress',function(e){
-        console.log(e);
+        if(e.keyCode == 13){
+            console.log('enter was pressed')
+        }
     })
 
 
 })(budgetController,uiController)
-
-controller.anotherPublic();
