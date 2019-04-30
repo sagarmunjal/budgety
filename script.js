@@ -29,12 +29,20 @@ var uiController = (function(){
                 description : document.querySelector(DOMstrings.inputDes).value,
                 value : document.querySelector(DOMstrings.inputVal).value
             }
+            // DOM strings are not available yet to be used by the controller
+            // so we now create another private variable which expose the DOM strings to the controller module publicly while keeping the variables private
+
+            getDOMstrings = function(){
+                return {DOMstrings}
+            }
         }
     }
     
 })();
 
 var controller = (function(budgetCtrl,UIctrl){
+    // once we added the publicly exposed method above we now reference the returned object to DOM
+    var DOM = UIctrl.getDOMstrings();
     var ctrlAddItem = function(){
         // 1. Get the field input data
         var input = UIctrl.getInput();
