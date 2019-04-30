@@ -12,7 +12,17 @@ var budgetController = (function(){
 })(); 
 
 var uiController = (function(){
+    /* now we are going to write our code in the uiController
+    As you know that our code is now being written in an IIFE, so whatever is returned will be immediately assigned to the controller function.
 
+    */
+
+    return {
+        getInput : function(){
+           var type = document.querySelector('.add__type').value;
+        }
+    }
+    
 })
 
 var controller = (function(budgetCtrl,UIctrl){
