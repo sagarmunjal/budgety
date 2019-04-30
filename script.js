@@ -19,10 +19,15 @@ var uiController = (function(){
 
     return {
         getInput : function(){
+            var DOMstrings = {
+                inputType: '.add__type',
+                inputDes : '.add__description',
+                inputVal : '.add__value'
+            }
             return {
-                type : document.querySelector('.add__type').value,
-                description : document.querySelector('.add__description').value,
-                value : document.querySelector('.add__value').value
+                type : document.querySelector(DOMstrings.inputType).value,
+                description : document.querySelector(DOMstrings.inputDes).value,
+                value : document.querySelector(DOMstrings.inputVal).value
             }
         }
     }
