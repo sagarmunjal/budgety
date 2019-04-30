@@ -24,6 +24,10 @@ var controller = (function(budgetCtrl,UIctrl){
         // 5. Display the budget on the UI
     })
 
+    document.addEventListener('keypress',function(e){
+        console.log(e);
+    })
+
 
 })(budgetController,uiController)
 
