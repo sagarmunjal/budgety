@@ -22,6 +22,11 @@ var controller = (function(budgetCtrl,UIctrl){
             console.log(z)
         }
     }
+    // add keypress event listeners
+    document.addEventListener('keypress', function(e){
+        console.log(e);
+    })
+
 })(budgetController,uiController)
 
 controller.anotherPublic();
