@@ -136,7 +136,7 @@ body {
     font-weight: 300;
     transition: border 0.3s;
 }
-.add__type img {
+img {
     width : 30px;
     height: 30px;
 }
