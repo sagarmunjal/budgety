@@ -23,11 +23,11 @@ var UIController = (function budgetctrl(){
 var z = budgetctrl.Test;
 var x = budgetctrl.Test2
 return{
-    secondTest: function(){
-        console.log(z);
+    secondTest: function(c){
+        console.log(z(c));
     },
-    thirdTest: function(){
-        console.log(x);
+    thirdTest: function(d){
+        console.log(x(d));
     }
 }
 }
