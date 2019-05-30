@@ -1,5 +1,5 @@
 var budgetController = (function U(){
-    var total = 100000;
+    var total = 0;
     var add = function(a){
         total = total + a ;
         console.log(total);
@@ -19,7 +19,7 @@ var budgetController = (function U(){
     }
 })();
 
-var UIController = (function budgetctrl(){
+var UIController = (function (budgetctrl){
 var z = budgetctrl.Test;
 var x = budgetctrl.Test2
 return{
