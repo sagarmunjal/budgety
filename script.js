@@ -21,7 +21,7 @@ var budgetController = (function U(){
 
 var UIController = (function (budgetctrl){
 var z = budgetctrl.Test;
-var x = budgetctrl.Test2
+var x = budgetctrl.Test2;
 return{
     secondTest: function(c){
         console.log(z(c));
@@ -32,5 +32,29 @@ return{
 }
 }
 )(budgetController);
-UIController.secondTest(500);
-UIController.thirdTest(500);
+
+var budgetApp = (function (e,f){
+    var addition = e.Test;
+    var additionUI = f.secondTest;
+    var subtraction = e.Test2;
+    var subtractionUI = f.thirdTest;
+    //need to use dom get element by id & add event listener but dunno where 
+    return {
+        addTest: function(c){
+            console.log(addition(c));
+        },
+        subTest:function(d){
+            console.log(subtraction(d));
+        },
+        addUI: function(c){
+            console.log(additionUI(c))
+            
+        },
+        subUI: function(d){
+            console.log(subtractionUI(d))
+        }
+}
+})(budgetController,UIController)
+
+budgetApp.addTest(500);
+budgetApp.subUI(500);
