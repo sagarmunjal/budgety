@@ -13,6 +13,12 @@ var budgetController = (function(){
 
 var uiController = (function(){
 
+    // TOY0003 (cont) - your code goes here below
+    var DOMstrings = {
+        inputType : ".add__type",
+        inputDes : ".add__description",
+        inputVal : ".add__value"
+    }
     return {
         getInput : function(){
             return {
@@ -26,8 +32,6 @@ var uiController = (function(){
 })();
 
 var appController = (function(budgetCtrl,UIctrl){
-        // once we added the publicly exposed method above we now reference the returned object to DOM
-        var DOM = UIctrl.getDOMstrings();
         
         
         var ctrlAddItem = function(){
