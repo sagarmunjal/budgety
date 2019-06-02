@@ -31,8 +31,15 @@ var appController = (function(budgetCtrl,UIctrl){
         
         
         var ctrlAddItem = function(){
-            var input = UIctrl.getInput();
-            console.log(input);
+            // 1. Get the field input data
+                // TOY0003 - store the DOM strings in uiCtrl module
+                var input = UIctrl.getInput();
+                console.log(input);
+
+            // 2. Add the item to the budget controller
+            // 3. Add the item to the UI
+            // 4. Calculate the budget
+            // 5. Display the budget on the UI
         }
 
     // Fetching add button from the DOM and attaching an event listener to it
