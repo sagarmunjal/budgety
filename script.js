@@ -27,13 +27,15 @@ var uiController = (function(){
                 value : document.querySelector(DOMstrings.inputVal).value
             }
         }
+        // TOY0004 (cont) - your code to make the DOMstrings publicly available goes here
+        
     }
     
 })();
 
 var appController = (function(budgetCtrl,UIctrl){
         
-        
+        // TOY0004 - the DOMstrings object declared in uiController is a private object, make it a public object so it can be used by the appController
         var ctrlAddItem = function(){
             // 1. Get the field input data
                 // TOY0003 - store the DOM strings in uiCtrl module
