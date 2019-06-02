@@ -12,10 +12,6 @@ var budgetController = (function(){
 })(); 
 
 var uiController = (function(){
-    /* now we are going to write our code in the uiController
-    As you know that our code is now being written in an IIFE, so whatever is returned will be immediately assigned to the controller function.
-
-    */
 
     return {
         getInput : function(){
@@ -32,23 +28,17 @@ var uiController = (function(){
 var appController = (function(budgetCtrl,UIctrl){
         // once we added the publicly exposed method above we now reference the returned object to DOM
         var DOM = UIctrl.getDOMstrings();
+        
+        
         var ctrlAddItem = function(){
-
-        var input = UIctrl.getInput();
-        console.log(input);
-
-    }
+            var input = UIctrl.getInput();
+            console.log(input);
+        }
 
     // Fetching add button from the DOM and attaching an event listener to it
     // TOY0001 - console lot message "button was pressed" when ever add button is pressed
 
     document.querySelector('.add__btn').addEventListener("click",ctrlAddItem) 
-
-        // 1. Get the field input data
-        // 2. Add the item to the budget controller
-        // 3. Add the item to the UI
-        // 4. Calculate the budget
-        // 5. Display the budget on the UI
 
     // adding event listener to the keypress event => resource(https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
     // TOY0002 - Find out the logic that will be replaced from the if logic below and what logic would be implemented.
