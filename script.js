@@ -6,35 +6,18 @@ var budgetController = (function(){
         this.description = description;
         this.value = value;
     }
-    var exampleExpense = new Expense('001',`trip`,15000);
+
 
     var Income = function(id,description,value){
         this.id = id;
         this.description = description;
         this.value = value;
     }
-    var exampleIncome = new Income('002',`tscJS27`,7000);
 
-    // Defining data structures for our data
-    // not the best practice
-    var allExpense = []
-    var allIncome = []
-    var totalExpenses = 0;
-    var totalIncome = 0;
 
     // good practice to have a good data structure rather than variables just laying around 
-    var data = {
-        expenses : {
-            all : [],
-            total : 0
-        },
-        income : {
-            all : [],
-            total : 0
-        }
-    }
     // or another options is 
-    /*
+
     var data = {
         all : {
             expenses : [],
@@ -45,10 +28,12 @@ var budgetController = (function(){
             income : 0
         }
     }
-    */
 
+    // TOY0008 - here addExpense is being exported from the budget control module, however we are manually passing in the arguments to the constructor function. 
+    // TOY0008 (cont) - how can you connect the constructor function with the data that we are getting on button click "addCtrlItem" in UIController 
     return{
-        exampleExpense,exampleIncome
+        addExpense : new Expense('001',`trip`,15000),
+        addIncome : new Income('002',`tscJS27`,7000)
     }
 })(); 
 
