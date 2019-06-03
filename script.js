@@ -28,7 +28,7 @@ var uiController = (function(){
             }
         }
         // TOY0004 (cont) - your code to make the DOMstrings publicly available goes here
-        
+
     }
     
 })();
@@ -43,24 +43,36 @@ var appController = (function(budgetCtrl,UIctrl){
                 console.log(input);
 
             // 2. Add the item to the budget controller
+
+
             // 3. Add the item to the UI
             // 4. Calculate the budget
             // 5. Display the budget on the UI
         }
 
-    // Fetching add button from the DOM and attaching an event listener to it
-    // TOY0001 - console lot message "button was pressed" when ever add button is pressed
+    // app controller has an initialisation function
+        var setupEventListeners = function (){
+            // Fetching add button from the DOM and attaching an event listener to it
+            // TOY0001 - console lot message "button was pressed" when ever add button is pressed
 
-    document.querySelector('.add__btn').addEventListener("click",ctrlAddItem) 
+            document.querySelector('.add__btn').addEventListener("click",ctrlAddItem) 
 
-    // adding event listener to the keypress event => resource(https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
-    // TOY0002 - Find out the logic that will be replaced from the if logic below and what logic would be implemented.
-    // TOY0002 (cont) - Replace the console.log statement accordingly
-    document.addEventListener('keypress',function(e){
-        if(e.keyCode === 13 || event.which === 13){
-            console.log('enter was pressed')
+            // adding event listener to the keypress event => resource(https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
+            // TOY0002 - Find out the logic that will be replaced from the if logic below and what logic would be implemented.
+            // TOY0002 (cont) - Replace the console.log statement accordingly
+            document.addEventListener('keypress',function(e){
+                if(e.keyCode === 13 || event.which === 13){
+                    ctrlAddItem();
+                }
+            })
         }
-    })
 
+        return {
+            init : setupEventListeners
+        }
 
 })(budgetController,uiController)
+
+// TOY0005 - explain the initialization function and its purpose and importance.
+// also explain what will happen if we remove the "appController.init()" function
+appController.init();
