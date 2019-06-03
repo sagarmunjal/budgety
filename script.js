@@ -21,7 +21,31 @@ var budgetController = (function(){
     var allIncome = []
     var totalExpenses = 0;
     var totalIncome = 0;
-    
+
+    // good practice to have a good data structure rather than variables just laying around 
+    var data = {
+        expenses : {
+            all : [],
+            total : 0
+        },
+        income : {
+            all : [],
+            total : 0
+        }
+    }
+    // or another options is 
+    /*
+    var data = {
+        all : {
+            expenses : [],
+            income : []
+        },
+        total : {
+            expenses : 0,
+            income : 0
+        }
+    }
+    */
 
     return{
         exampleExpense,exampleIncome
