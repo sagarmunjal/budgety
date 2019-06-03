@@ -1,7 +1,6 @@
 var budgetController = (function(){
-    // TOY0007 - explain the constructor function and the code execution
-    // TOY0007 (cont) - the code executes from the appController, explain the code flow
-    // insdie our budget app controller we also need constructor functions 
+
+    // Constructor functions 
     var Expense = function(id,description,value){
         this.id = id;
         this.description = description;
@@ -16,6 +15,13 @@ var budgetController = (function(){
     }
     var exampleIncome = new Income('002',`tscJS27`,7000);
 
+    // Defining data structures for our data
+    // not the best practice
+    var allExpense = []
+    var allIncome = []
+    var totalExpenses = 0;
+    var totalIncome = 0;
+    
 
     return{
         exampleExpense,exampleIncome
