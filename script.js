@@ -1,5 +1,23 @@
 var budgetController = (function(){
+    // insdie our budget app we also need constructor functions 
+    var Expense = function(id,description,value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    }
+    var exampleExpense = new Expense('001',`trip`,15000);
 
+    var Income = function(id,description,value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    }
+    var exampleIncome = new Income('002',`tscJS27`,7000);
+
+
+    return{
+        exampleExpense,exampleIncome
+    }
 })(); 
 
 var uiController = (function(){
@@ -35,7 +53,8 @@ var appController = (function(budgetCtrl,UIctrl){
                 console.log(input);
 
             // 2. Add the item to the budget controller
-
+                console.log(budgetCtrl.exampleExpense)
+                console.log(budgetController.exampleIncome)
 
             // 3. Add the item to the UI
             // 4. Calculate the budget
@@ -68,3 +87,11 @@ var appController = (function(budgetCtrl,UIctrl){
 appController.init();
 
 // TOY0006 - creating constructor functions 
+
+function Person(name,age){
+    this.age = age;
+    this.name = name
+}
+
+var joseph = new Person("joseph",55);
+console.log(joseph);
