@@ -17,7 +17,8 @@ var uiController = (function(){
     var DOMstrings = {
         inputType : ".add__type",
         inputDes : ".add__description",
-        inputVal : ".add__value"
+        inputVal : ".add__value",
+        addButton : ".add__btn"
     }
     return {
         getInput : function(){
@@ -26,9 +27,11 @@ var uiController = (function(){
                 description : document.querySelector(DOMstrings.inputDes).value,
                 value : document.querySelector(DOMstrings.inputVal).value
             }
-        }
+        },
         // TOY0004 (cont) - your code to make the DOMstrings publicly available goes here
-
+        getDOMStrings : function(){
+            return DOMstrings
+        }
     }
     
 })();
@@ -52,10 +55,11 @@ var appController = (function(budgetCtrl,UIctrl){
 
     // app controller has an initialisation function
         var setupEventListeners = function (){
+            
             // Fetching add button from the DOM and attaching an event listener to it
             // TOY0001 - console lot message "button was pressed" when ever add button is pressed
 
-            document.querySelector('.add__btn').addEventListener("click",ctrlAddItem) 
+            document.querySelector(DOMstrings.addButton).addEventListener("click",ctrlAddItem) 
 
             // adding event listener to the keypress event => resource(https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
             // TOY0002 - Find out the logic that will be replaced from the if logic below and what logic would be implemented.
