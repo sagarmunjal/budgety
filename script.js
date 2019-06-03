@@ -55,15 +55,12 @@ var appController = (function(budgetCtrl,UIctrl){
 
     // app controller has an initialisation function
         var setupEventListeners = function (){
-            
+            var DOMstrings = UIctrl.getDOMStrings();
             // Fetching add button from the DOM and attaching an event listener to it
-            // TOY0001 - console lot message "button was pressed" when ever add button is pressed
 
             document.querySelector(DOMstrings.addButton).addEventListener("click",ctrlAddItem) 
 
             // adding event listener to the keypress event => resource(https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
-            // TOY0002 - Find out the logic that will be replaced from the if logic below and what logic would be implemented.
-            // TOY0002 (cont) - Replace the console.log statement accordingly
             document.addEventListener('keypress',function(e){
                 if(e.keyCode === 13 || event.which === 13){
                     ctrlAddItem();
