@@ -1,19 +1,9 @@
 var budgetController = (function(){
-    var x = 23;
-    var add = function(a){
-        return x + a;
-    }
 
-    return {
-        publicTest : function (b){
-            return add(b);
-        }
-    }
 })(); 
 
 var uiController = (function(){
 
-    // TOY0003 (cont) - your code goes here below
     var DOMstrings = {
         inputType : ".add__type",
         inputDes : ".add__description",
@@ -28,7 +18,7 @@ var uiController = (function(){
                 value : document.querySelector(DOMstrings.inputVal).value
             }
         },
-        // TOY0004 (cont) - your code to make the DOMstrings publicly available goes here
+        
         getDOMStrings : function(){
             return DOMstrings
         }
@@ -38,10 +28,9 @@ var uiController = (function(){
 
 var appController = (function(budgetCtrl,UIctrl){
         
-        // TOY0004 - the DOMstrings object declared in uiController is a private object, make it a public object so it can be used by the appController
+        
         var ctrlAddItem = function(){
             // 1. Get the field input data
-                // TOY0003 - store the DOM strings in uiCtrl module
                 var input = UIctrl.getInput();
                 console.log(input);
 
@@ -77,3 +66,5 @@ var appController = (function(budgetCtrl,UIctrl){
 // TOY0005 - explain the initialization function and its purpose and importance.
 // also explain what will happen if we remove the "appController.init()" function
 appController.init();
+
+// TOY0006 - creating constructor functions 
