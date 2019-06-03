@@ -1,5 +1,7 @@
 var budgetController = (function(){
-    // insdie our budget app we also need constructor functions 
+    // TOY0007 - explain the constructor function and the code execution
+    // TOY0007 (cont) - the code executes from the appController, explain the code flow
+    // insdie our budget app controller we also need constructor functions 
     var Expense = function(id,description,value){
         this.id = id;
         this.description = description;
