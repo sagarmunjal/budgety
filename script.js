@@ -20,35 +20,51 @@ var budgetController = (function(){
 
     var data = {
         all : {
-            expenses : [],
-            income : []
+            exp : [],
+            inc : []
         },
         total : {
-            expenses : 0,
-            income : 0
+            exp : 0,
+            inc : 0
         }
     }
 
     // TOY0008 - here addExpense is being exported from the budget control module, however we are manually passing in the arguments to the constructor function. 
     // TOY0008 (cont) - how can you connect the constructor function with the data that we are getting on button click "addCtrlItem" in UIController 
     return{
-        addExpense : new Expense('001',`trip`,15000),
-        addIncome : new Income('002',`tscJS27`,7000)
+        addItem : function(type,description,value){
+            var randomId,newInstance
+            var randomId = (function (){return Math.floor(Math.random()*100000)})();
+            if(type == "exp"){
+                newInstance = new Expense(randomId,description,value)
+            }else if(type == "inc"){
+                newInstance = new Income(randomId,description,value)
+            }
+            data.all[type].push(newInstance);
+            console.log(data)
+            return newInstance;
+        }
     }
 })(); 
 
 var uiController = (function(){
 
     var DOMstrings = {
-        inputType : ".add__type",
+        inputId : ".add__type",
         inputDes : ".add__description",
         inputVal : ".add__value",
         addButton : ".add__btn"
     }
     return {
         getInput : function(){
+            var type;
+            if(document.querySelector(".add__type").checked == true){
+                type = 'inc'
+            }else{
+                type = 'exp'
+            }
             return {
-                type : document.querySelector(DOMstrings.inputType).value,
+                type : type,
                 description : document.querySelector(DOMstrings.inputDes).value,
                 value : document.querySelector(DOMstrings.inputVal).value
             }
@@ -70,9 +86,7 @@ var appController = (function(budgetCtrl,UIctrl){
                 console.log(input);
 
             // 2. Add the item to the budget controller
-                console.log(budgetCtrl.exampleExpense)
-                console.log(budgetController.exampleIncome)
-
+                budgetCtrl.addItem(input.type,input.description,input.value);
             // 3. Add the item to the UI
             // 4. Calculate the budget
             // 5. Display the budget on the UI
@@ -102,13 +116,3 @@ var appController = (function(budgetCtrl,UIctrl){
 // TOY0005 - explain the initialization function and its purpose and importance.
 // also explain what will happen if we remove the "appController.init()" function
 appController.init();
-
-// TOY0006 - creating constructor functions 
-
-function Person(name,age){
-    this.age = age;
-    this.name = name
-}
-
-var joseph = new Person("joseph",55);
-console.log(joseph);
