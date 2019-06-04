@@ -28,7 +28,7 @@ var budgetController = (function(){
             inc : 0
         }
     }
-
+    // TOY0008 - solution
     // TOY0008 - here addExpense is being exported from the budget control module, however we are manually passing in the arguments to the constructor function. 
     // TOY0008 (cont) - how can you connect the constructor function with the data that we are getting on button click "addCtrlItem" in UIController 
     return{
@@ -113,6 +113,5 @@ var appController = (function(budgetCtrl,UIctrl){
 
 })(budgetController,uiController)
 
-// TOY0005 - explain the initialization function and its purpose and importance.
-// also explain what will happen if we remove the "appController.init()" function
+
 appController.init();
