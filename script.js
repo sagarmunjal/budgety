@@ -57,7 +57,7 @@ var uiController = (function(){
     return {
         getInput : function(){
             var type;
-            if(document.querySelector(".add__type").checked == true){
+            if(document.querySelector(DOMstrings.inputId).checked == true){
                 type = 'inc'
             }else{
                 type = 'exp'
@@ -112,8 +112,4 @@ var appController = (function(budgetCtrl,UIctrl){
 
 })(budgetController,uiController)
 
-//TOY0009 - Explain the code execution using a diagram 
-// (cont...) code execution initiates at appController.init() > uiController module > budgetCtrl > storing data in variable data. 
-// (cont...) the diagram should be a flowchart, with proper arrows and labeling including the following
-// (cont...) what happens inside individual modules (appController) > (UIController) > (BudgetController)
 appController.init();
