@@ -68,6 +68,10 @@ var uiController = (function(){
                 value : document.querySelector(DOMstrings.inputVal).value
             }
         },
+        addListItem : function(item,type){
+            // create HTML string
+            // insert HTML into the dome
+        },
         
         getDOMStrings : function(){
             return DOMstrings
@@ -85,8 +89,9 @@ var appController = (function(budgetCtrl,UIctrl){
                 console.log(input);
 
             // 2. Add the item to the budget controller
-                budgetCtrl.addItem(input.type,input.description,input.value);
+                var newItem = budgetCtrl.addItem(input.type,input.description,input.value);
             // 3. Add the item to the UI
+
             // 4. Calculate the budget
             // 5. Display the budget on the UI
         }
@@ -108,6 +113,7 @@ var appController = (function(budgetCtrl,UIctrl){
 
         return {
             init : setupEventListeners
+
         }
 
 })(budgetController,uiController)
