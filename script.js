@@ -40,7 +40,9 @@ var budgetController = (function(){
         total : {
             exp : 0,
             inc : 0
-        }
+        },
+        budget : 0,
+        percentage:-1
     }
     
     // addExpense is being exported from the budget control module
@@ -58,11 +60,15 @@ var budgetController = (function(){
             return newInstance;
         },
         calculateBudget : function(){
+            var budget;
             // 1. calculate total income and expenses
-                console.log(calculateTotal('exp'));
-                console.log(calculateTotal('inc'));
-            // 2. calculate the budget - income - expenses 
-            // 3. calculate the percentage of income spent
+            var budget = calculateTotal('inc')- calculateTotal('exp')
+            // 2. calculate the percentage  
+                data.percentage = (data.total.exp/data.total.inc) * 100
+                console.log(`${data.percentage}%`)
+            // 3. calculate the budget - income - expenses 
+                data.budget = budget;
+            return budget;
         }
     }
 })(); 
