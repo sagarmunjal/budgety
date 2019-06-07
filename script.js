@@ -67,7 +67,7 @@ var uiController = (function(){
             return {
                 type : type,
                 description : document.querySelector(DOMstrings.inputDes).value,
-                value : document.querySelector(DOMstrings.inputVal).value
+                value : parseFloat(document.querySelector(DOMstrings.inputVal).value)
             }
         },
         addListItem : function(item,type){
@@ -115,8 +115,8 @@ var appController = (function(budgetCtrl,UIctrl){
             // 1. Get the field input data
                 var input = UIctrl.getInput();
                 console.log(input);
-
-            // 2. Add the item to the budget controller
+            if(input.description && !isNaN(input.value) && input.value > 0){
+                // 2. Add the item to the budget controller
                 var newItem = budgetCtrl.addItem(input.type,input.description,input.value);
             // 3. Add the item to the UI
                 UIctrl.addListItem(newItem,input.type)
@@ -124,6 +124,10 @@ var appController = (function(budgetCtrl,UIctrl){
             // 4. Delete item 
 
             // 5. Update budget
+            }else{
+                console.log('Kindly give some values')
+            }
+            
 
         }
 
