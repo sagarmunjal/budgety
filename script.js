@@ -14,6 +14,20 @@ var budgetController = (function(){
         this.value = value;
     }
 
+    function calculateTotal(type){
+        var sum = 0;
+        // 1. forEach loop on the income array 
+            data.all[type].forEach(function(current){
+                sum += current.value;
+            })
+
+        // update data
+            data.total[type] = sum;
+
+        // 3. returns the total sum
+            return sum
+    }
+
 
     // good practice to have a good data structure rather than variables just laying around 
     // or another options is 
@@ -42,6 +56,13 @@ var budgetController = (function(){
             data.all[type].push(newInstance);
             console.log(data)
             return newInstance;
+        },
+        calculateBudget : function(){
+            // 1. calculate total income and expenses
+                console.log(calculateTotal('exp'));
+                console.log(calculateTotal('inc'));
+            // 2. calculate the budget - income - expenses 
+            // 3. calculate the percentage of income spent
         }
     }
 })(); 
@@ -107,10 +128,12 @@ var appController = (function(budgetCtrl,UIctrl){
         
         var updateBudget = function(){
             // 1. Calculate the budget
+            budgetCtrl.calculateBudget();
             // 2. Return the budget
             // 3. Display the budget on the UI
 
         }
+        
         var ctrlAddItem = function(){
             // 1. Get the field input data
                 var input = UIctrl.getInput();
@@ -124,6 +147,8 @@ var appController = (function(budgetCtrl,UIctrl){
             // 4. Delete item 
 
             // 5. Update budget
+                updateBudget();
+
             }else{
                 console.log('Kindly give some values')
             }
