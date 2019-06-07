@@ -52,7 +52,9 @@ var uiController = (function(){
         inputId : ".add__type",
         inputDes : ".add__description",
         inputVal : ".add__value",
-        addButton : ".add__btn"
+        addButton : ".add__btn",
+        incomeContainer : '.income__list',
+        expenseContainer : '.expenses__list'
     }
     return {
         getInput : function(){
@@ -69,8 +71,27 @@ var uiController = (function(){
             }
         },
         addListItem : function(item,type){
+            var html,newHTML,element
             // create HTML string
+            if(type == "inc"){
+                    element = DOMstrings.incomeContainer
+                    html = '<div class="item clearfix" id="income-%id%"><div class="item__description">Salary</div><div class="right clearfix"><div class="item__value">+ 2,100.00</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+           
+                }else if(type == "exp"){
+                    element = DOMstrings.expenseContainer
+                    html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">Apartment rent</div><div class="right clearfix"><div class="item__value">- 900.00</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+            }
+
+
+            newHTML = html.replace('%id%',item.id)
+            newHTML = newHTML.replace('%description%',item.description)
+            newHTML = newHTML.replace('%value%',item.value)
+
             // insert HTML into the dome
+            // ref - https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+
+            document.querySelector(element).insertAdjacentHTML('beforeend',newHTML)
+
         },
         
         getDOMStrings : function(){
@@ -91,7 +112,7 @@ var appController = (function(budgetCtrl,UIctrl){
             // 2. Add the item to the budget controller
                 var newItem = budgetCtrl.addItem(input.type,input.description,input.value);
             // 3. Add the item to the UI
-
+                UIctrl.addListItem(newItem,input.type)
             // 4. Calculate the budget
             // 5. Display the budget on the UI
         }
