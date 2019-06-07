@@ -101,9 +101,16 @@ var uiController = (function(){
     
 })();
 
+
+
 var appController = (function(budgetCtrl,UIctrl){
         
-        
+        var updateBudget = function(){
+            // 1. Calculate the budget
+            // 2. Return the budget
+            // 3. Display the budget on the UI
+
+        }
         var ctrlAddItem = function(){
             // 1. Get the field input data
                 var input = UIctrl.getInput();
@@ -113,8 +120,11 @@ var appController = (function(budgetCtrl,UIctrl){
                 var newItem = budgetCtrl.addItem(input.type,input.description,input.value);
             // 3. Add the item to the UI
                 UIctrl.addListItem(newItem,input.type)
-            // 4. Calculate the budget
-            // 5. Display the budget on the UI
+            
+            // 4. Delete item 
+
+            // 5. Update budget
+
         }
 
     // app controller has an initialisation function
