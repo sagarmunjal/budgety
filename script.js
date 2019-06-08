@@ -64,8 +64,12 @@ var budgetController = (function(){
             // 1. calculate total income and expenses
             var budget = calculateTotal('inc')- calculateTotal('exp')
             // 2. calculate the percentage  
+            if(data.total.inc > 0){
                 data.percentage = Math.round((data.total.exp/data.total.inc) * 100)
                 console.log(`${data.percentage}%`)
+            }else {
+                data.percentage = -1;
+            }
             // 3. calculate the budget - income - expenses 
                 data.budget = budget;
             return budget;
@@ -89,7 +93,11 @@ var uiController = (function(){
         inputVal : ".add__value",
         addButton : ".add__btn",
         incomeContainer : '.income__list',
-        expenseContainer : '.expenses__list'
+        expenseContainer : '.expenses__list',
+        budgetLabel : ".budget__value",
+        incomeLabel : ".budget__income--value",
+        expenseLabel : ".budget__expenses--value",
+        percentageLabel : ".budget__expenses--percentage"
     }
     return {
         getInput : function(){
@@ -128,6 +136,11 @@ var uiController = (function(){
             document.querySelector(element).insertAdjacentHTML('beforeend',newHTML)
 
         },
+        //TOY0010 - based on the previous commits about DOM updation we are now going to update the following - 
+        // cont ... 1. total budget 2. income/expense 3. percentage
+        displayBudget :function(obj){
+            document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget
+        },
         
         getDOMStrings : function(){
             return DOMstrings
@@ -144,8 +157,10 @@ var appController = (function(budgetCtrl,UIctrl){
             // 1. Calculate the budget
             budgetCtrl.calculateBudget();
             // 2. Return the budget
-            console.log(budgetCtrl.getBudget());
+            var budgetObj = budgetCtrl.getBudget()
+            console.log();
             // 3. Display the budget on the UI
+            UIctrl.displayBudget(budgetObj);
 
         }
         
