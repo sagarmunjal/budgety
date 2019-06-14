@@ -75,8 +75,7 @@ return{
     deleteItem : function(type,id){
         var IDarr = data.all[type].map(function(item){
             return item.id;})
-        var index = IDarr.indexof(id);
-        console.log(data[type]);
+        var index = IDarr.indexOf(id);
     }
 }
 })();
@@ -172,16 +171,14 @@ var AppController = (function (budgetCtrl,uiCtrl){
     }
 }
     var ctrlDelete = function(event){
-        //parent node etc?
-        console.log(event.target.parentNode.parentNode.parentNode.parentNode.id);
         var ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
         var splitter = ID.split("-");
         console.log(splitter);
         Type = splitter[0];
-        type = Type.substring()
-        id = splitter[1];
+        type = Type.substring(0,3);
+        Id = splitter[1];
+        budgetCtrl.deleteItem(type,Id);
         uiCtrl.deleteItem();
-        budgetCtrl.deleteItem();
     }
     var setupEventListeners = function(){
         var DOMstrings = uiCtrl.getDOMstrings();
