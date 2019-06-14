@@ -76,6 +76,7 @@ return{
         var IDarr = data.all[type].map(function(item){
             return item.id;})
         var index = IDarr.indexOf(id);
+        data.all[type].splice(index);
     }
 }
 })();
@@ -172,8 +173,7 @@ var AppController = (function (budgetCtrl,uiCtrl){
 }
     var ctrlDelete = function(event){
         var ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-        var splitter = ID.split("-");
-        console.log(splitter);
+        var splitter = ID.split('-',2);
         Type = splitter[0];
         type = Type.substring(0,3);
         Id = splitter[1];
