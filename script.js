@@ -72,8 +72,14 @@ return{
             percentage : data.percentage
         }
     },
-    deleteItem : function(){
-        
+    deleteItem : function(type,id){
+        console.log(`deleteItem function invoked`);
+        // 1. split id
+        // 2. store type and id in variables
+        // 3. map through the data.all[type] and store the returning array of IDs in a seperate variable 'idArr'
+        // 4. find index of the particular id using index of
+        //      var index = idArr.indexOf(id)
+        // 5. Now we have the index so delete that element using array.splice method 
     }
 }
 })();
@@ -136,7 +142,12 @@ var DOMstrings = {
                 document.querySelector(DOMstrings.percentageLabel).textContent = '--'
             }
         },
-        deleteItem : function(){
+        deleteListItem : function(selectorId){
+            console.log(`deleteListItem invoked`)
+            // 1. get the element
+            //  var el = document.getElementById('selectorId);
+            // 2. remove child element
+            //      el.parentNode.removechild()
             
         },
         getDOMstrings : function(){
@@ -171,8 +182,13 @@ var AppController = (function (budgetCtrl,uiCtrl){
     var ctrlDelete = function(event){
         //parent node etc?
         console.log(event.target.parentNode.parentNode.parentNode.parentNode.id);
+        var id
+        id = event.target.parentNode.parentNode.parentNode.parentNode.id
+        // delete from UI
         uiCtrl.deleteItem();
-        budgetCtrl.deleteItem();
+        // delete from database
+        budgetCtrl.deleteItem(type,id);
+        // update budget (functionality already exists)
     }
     var setupEventListeners = function(){
         var DOMstrings = uiCtrl.getDOMstrings();
