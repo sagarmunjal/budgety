@@ -162,7 +162,11 @@ var uiController = (function(){
             }
             
         },
-        
+        deleteListItem : function (selectorId){
+            console.log(`delete UI item invoked`);
+            // 1. Get the element ID using getElementById
+            // 2. use document.removeChild to remove the child element
+        },
         getDOMStrings : function(){
             return DOMstrings
         }
@@ -182,7 +186,6 @@ var appController = (function(budgetCtrl,UIctrl){
             console.log();
             // 3. Display the budget on the UI
             UIctrl.displayBudget(budgetObj);
-
         }
         
         var ctrlAddItem = function(){
@@ -220,8 +223,8 @@ var appController = (function(budgetCtrl,UIctrl){
             }else{
                 return
             }
-            // 1. delete the HTML 
-                //UIctrl.deleteItem()
+            // 1. delete the HTML element from UI
+                UIctrl.deleteItem()
             // 2. delete the data record from the database 
                 budgetCtrl.deleteItem(ID,type)
             // 3. update the UI 
