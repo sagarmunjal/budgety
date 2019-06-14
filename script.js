@@ -72,8 +72,11 @@ return{
             percentage : data.percentage
         }
     },
-    deleteItem : function(){
-        
+    deleteItem : function(type,id){
+        var IDarr = data.all[type].map(function(item){
+            return item.id;})
+        var index = IDarr.indexof(id);
+        console.log(data[type]);
     }
 }
 })();
@@ -171,6 +174,12 @@ var AppController = (function (budgetCtrl,uiCtrl){
     var ctrlDelete = function(event){
         //parent node etc?
         console.log(event.target.parentNode.parentNode.parentNode.parentNode.id);
+        var ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+        var splitter = ID.split("-");
+        console.log(splitter);
+        Type = splitter[0];
+        type = Type.substring()
+        id = splitter[1];
         uiCtrl.deleteItem();
         budgetCtrl.deleteItem();
     }
