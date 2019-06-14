@@ -165,7 +165,9 @@ var uiController = (function(){
         deleteListItem : function (selectorId){
             console.log(`delete UI item invoked`);
             // 1. Get the element ID using getElementById
+            var el = document.getElementById(selectorId)
             // 2. use document.removeChild to remove the child element
+            el.parentNode.removeChild(el);
         },
         getDOMStrings : function(){
             return DOMstrings
@@ -224,11 +226,11 @@ var appController = (function(budgetCtrl,UIctrl){
                 return
             }
             // 1. delete the HTML element from UI
-                UIctrl.deleteItem()
+                UIctrl.deleteListItem(id)
             // 2. delete the data record from the database 
                 budgetCtrl.deleteItem(ID,type)
             // 3. update the UI 
-            
+                updateBudget();
         }
 
     // app controller has an initialisation function
