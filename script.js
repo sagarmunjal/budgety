@@ -49,7 +49,7 @@ var budgetController = (function(){
     return{
         addItem : function(type,description,value){
             var randomId,newInstance
-            var randomId = (function (){return Math.floor(Math.random()*100000)})();
+            var randomId = (function (){return `${type}${Math.floor(Math.random()*100000)}`})(type);
             if(type == "exp"){
                 newInstance = new Expense(randomId,description,value)
             }else if(type == "inc"){
@@ -58,6 +58,18 @@ var budgetController = (function(){
             data.all[type].push(newInstance);
             console.log(data)
             return newInstance;
+        },
+        deleteItem : function(id,type){
+            console.log(`delete Item from budget control invoked`)
+            // map returns an array 
+            // forEach doesnt return an array only operates on each item
+            idsArray = data.all[type].map(function(item){
+                return item.id
+            })
+            console.log(idsArray)
+            var index = idsArray.indexOf(id)
+            data.all[type].splice(index,1)
+            console.log(data);
         },
         calculateBudget : function(){
             var budget;
@@ -119,11 +131,11 @@ var uiController = (function(){
             // create HTML string
             if(type == "inc"){
                     element = DOMstrings.incomeContainer
-                    html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+                    html = '<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
            
                 }else if(type == "exp"){
                     element = DOMstrings.expenseContainer
-                    html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description% </div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+                    html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description% </div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             }
 
 
@@ -196,7 +208,24 @@ var appController = (function(budgetCtrl,UIctrl){
         }
         
         var ctrlDelete = function(event){
-            console.log(event.target.parentNode.parentNode.parentNode.parentNode.id)
+            console.log(`control delete invoked`)
+            var id
+            id = event.target.parentNode.parentNode.parentNode.parentNode.id
+            if(id){
+                var splitID = id.split('-')
+                var type = splitID[0]
+                ID = parseInt(splitID[1]);
+                console.log(ID,type)
+
+            }else{
+                return
+            }
+            // 1. delete the HTML 
+                //UIctrl.deleteItem()
+            // 2. delete the data record from the database 
+                budgetCtrl.deleteItem(ID,type)
+            // 3. update the UI 
+            
         }
 
     // app controller has an initialisation function
