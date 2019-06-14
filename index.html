@@ -39,11 +39,16 @@
         
         <div class="bottom">
             <div class="add">
-                <div class="add__container">
+                <div class="add__container">   
+                    <button> <input class="add__type" type="radio" name="grp1"  value="inc" checked="true"> <img src="plus.svg" alt=""></button>
+                    <button> <input class="add__type" type="radio" name="grp1" value="exp"> <img src="negative.svg" alt=""></button>     
+
+                    <!-- 
                     <select class="add__type">
                         <option value="inc" selected>+</option>
                         <option value="exp">-</option>
                     </select>
+                    -->
                     <input type="text" class="add__description" placeholder="Add description">
                     <input type="number" class="add__value" placeholder="Value">
                     <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
@@ -99,7 +104,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="item clearfix" id="expense-1">
                             <div class="item__description">Grocery shopping</div>
                             <div class="right clearfix">
@@ -119,6 +123,6 @@
             
         </div>
         
-        <script src="app.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
