@@ -181,6 +181,7 @@ var AppController = (function (budgetCtrl,uiCtrl){
         Id = splitter[1];
         budgetCtrl.deleteItem(type,Id);
         uiCtrl.deleteItem(ID);
+        updateBudget();
     }
     var setupEventListeners = function(){
         var DOMstrings = uiCtrl.getDOMstrings();
