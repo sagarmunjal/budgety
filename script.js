@@ -142,7 +142,7 @@ var DOMstrings = {
         deleteItem : function(selectorId){
             console.log('deleteItem invoked);
             var el = document.getElementById('selectorId');
-            el.parentnode.removechild();
+            el.parentnode.removechild(el);
         },
         getDOMstrings : function(){
             return DOMstrings;
@@ -180,7 +180,7 @@ var AppController = (function (budgetCtrl,uiCtrl){
         type = Type.substring(0,3);
         Id = splitter[1];
         budgetCtrl.deleteItem(type,Id);
-        uiCtrl.deleteItem();
+        uiCtrl.deleteItem(ID);
     }
     var setupEventListeners = function(){
         var DOMstrings = uiCtrl.getDOMstrings();
