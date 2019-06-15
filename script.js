@@ -139,8 +139,10 @@ var DOMstrings = {
                 document.querySelector(DOMstrings.percentageLabel).textContent = '--'
             }
         },
-        deleteItem : function(){
-            
+        deleteItem : function(selectorId){
+            console.log('deleteItem invoked);
+            var el = document.getElementById('selectorId');
+            el.parentnode.removechild();
         },
         getDOMstrings : function(){
             return DOMstrings;
